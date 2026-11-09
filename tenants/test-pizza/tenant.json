@@ -1,0 +1,206 @@
+{
+  "id": "test-pizza",
+  "packageId": "de.bartuan.loyalty.testpizza",
+  "appName": "Pizza Test",
+  "versionCode": 1,
+  "versionName": "1.0",
+  "brand": {
+    "name": "Pizza Test",
+    "wordmarkTop": "",
+    "wordmarkMain": "Pizza Test",
+    "tagline": "",
+    "iconText": "P",
+    "dark": false,
+    "colors": {
+      "primary": "#0B6E4F",
+      "onPrimary": "#FFFFFF",
+      "accent": "#C8742B",
+      "onAccent": "#FFFFFF",
+      "background": "#F4EEE3",
+      "surface": "#FFFBF4",
+      "surfaceAlt": "#EAE1D2",
+      "text": "#231C15",
+      "muted": "#7A6E62",
+      "outline": "#D9CDBB"
+    },
+    "fonts": {
+      "display": "DMSerifDisplay-Regular.ttf",
+      "body": "Barlow-Regular.ttf",
+      "bodySemi": "Barlow-SemiBold.ttf",
+      "bodyBold": "Barlow-Bold.ttf"
+    },
+    "heroImage": "",
+    "secondaryImage": "",
+    "logo": ""
+  },
+  "loyalty": {
+    "pointsPerEuro": 2,
+    "signupBonus": 5,
+    "redeemQrSeconds": 60,
+    "pointsName": "Körner"
+  },
+  "staff": {
+    "pin": "4321"
+  },
+  "locations": [
+    {
+      "name": "Filiale Haidhausen (Demo)",
+      "street": "Musterstraße 1",
+      "city": "81667 München",
+      "phone": "+49 89 0000000",
+      "lat": 48.1299,
+      "lng": 11.597,
+      "hours": [
+        {
+          "day": 1,
+          "open": "06:30",
+          "close": "18:00"
+        },
+        {
+          "day": 2,
+          "open": "06:30",
+          "close": "18:00"
+        },
+        {
+          "day": 3,
+          "open": "06:30",
+          "close": "18:00"
+        },
+        {
+          "day": 4,
+          "open": "06:30",
+          "close": "18:00"
+        },
+        {
+          "day": 5,
+          "open": "06:30",
+          "close": "18:00"
+        },
+        {
+          "day": 6,
+          "open": "07:00",
+          "close": "14:00"
+        },
+        {
+          "day": 7,
+          "open": "",
+          "close": ""
+        }
+      ],
+      "facts": [
+        "Bio-Mehl",
+        "Café-Plätze",
+        "Kartenzahlung"
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "category": "Brot",
+      "items": [
+        {
+          "name": "Roggensauerteig 1 kg",
+          "desc": "48 Stunden Teigführung",
+          "price": 5.2
+        },
+        {
+          "name": "Dinkelvollkorn",
+          "desc": "",
+          "price": 4.6
+        }
+      ]
+    },
+    {
+      "category": "Gebäck",
+      "items": [
+        {
+          "name": "Butterbrezn",
+          "desc": "",
+          "price": 1.9
+        },
+        {
+          "name": "Croissant",
+          "desc": "",
+          "price": 1.8
+        },
+        {
+          "name": "Zimtschnecke",
+          "desc": "",
+          "price": 2.9
+        }
+      ]
+    },
+    {
+      "category": "Kaffee",
+      "items": [
+        {
+          "name": "Filterkaffee",
+          "desc": "",
+          "price": 2.4
+        },
+        {
+          "name": "Cappuccino",
+          "desc": "Hafermilch +0,40 €",
+          "price": 3.4
+        }
+      ]
+    }
+  ],
+  "rewards": [
+    {
+      "id": "kaffee",
+      "name": "Filterkaffee",
+      "desc": "Aufs Haus",
+      "points": 25
+    },
+    {
+      "id": "zimt",
+      "name": "Zimtschnecke",
+      "desc": "Frisch aus dem Ofen",
+      "points": 30
+    },
+    {
+      "id": "brot",
+      "name": "Roggensauerteig 1 kg",
+      "desc": "Unser Klassiker",
+      "points": 60
+    }
+  ],
+  "coupons": [
+    {
+      "id": "frueh",
+      "title": "Frühaufsteher",
+      "desc": "Vor 8 Uhr: Kaffee + Brezn für 3,50 €",
+      "badge": "3,50 €",
+      "validTo": "2026-12-31",
+      "price": "3,50"
+    }
+  ],
+  "campaigns": [
+    {
+      "title": "Frisch aus dem Ofen",
+      "body": "Die Zimtschnecken sind gerade raus."
+    }
+  ],
+  "legal": {
+    "operator": "Pizza Test",
+    "privacyNote": "Demo: alle Daten bleiben auf deinem Gerät."
+  },
+  "sources": [],
+  "home": {
+    "hero": {
+      "image": "img/hero.jpg",
+      "eyebrow": "Nur in der App",
+      "title": "PIZZA MARGHERITA",
+      "subtitle": "Sammle Punkte bei jedem Einkauf",
+      "cta": "Coupons ansehen",
+      "couponId": ""
+    },
+    "promo": {
+      "title": "Doppelte Punkte",
+      "body": "Jeden Montag.",
+      "image": ""
+    },
+    "news": []
+  }
+}

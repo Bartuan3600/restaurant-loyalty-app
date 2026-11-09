@@ -1,0 +1,110 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><title>App Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}body{margin:0;font:14px/1.4 system-ui,sans-serif;background:#f3f4f6;color:#111;display:grid;grid-template-columns:230px 1fr 420px;height:100vh}
+aside{background:#111827;color:#e5e7eb;padding:14px;overflow:auto}aside h1{font-size:18px;margin:0 0 12px}aside .t{padding:8px;border-radius:8px;cursor:pointer;display:flex;gap:8px;align-items:center}aside .t:hover,aside .t.on{background:#374151}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}aside small{color:#9ca3af;display:block}
+main{overflow:auto;padding:18px 22px}section{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:14px;box-shadow:0 1px 2px #0001}
+section>h2{margin:0 0 10px;font-size:15px;cursor:pointer}section.closed>*:not(h2){display:none}section>h2:before{content:'▾ '}section.closed>h2:before{content:'▸ '}
+label{display:block;font-size:12px;color:#555;margin:6px 0 2px}input,textarea,select{width:100%;padding:6px 8px;border:1px solid #d1d5db;border-radius:6px;font:inherit}textarea{min-height:54px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 12px}.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:0 10px}
+input[type=color]{height:34px;padding:2px}input[type=checkbox]{width:auto}
+.item{border:1px solid #e5e7eb;border-radius:8px;padding:8px 10px;margin:8px 0;background:#fafafa}.item .hd{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+button{border:0;border-radius:8px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer;background:#e5e7eb}button.p{background:#2563eb;color:#fff}button.x{background:none;color:#b91c1c;padding:2px 6px}button.s{padding:4px 8px;font-size:12px}
+.bar{position:sticky;top:0;z-index:5;background:#f3f4f6;padding:4px 0 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}#msg{font-size:13px}
+.img{display:flex;gap:6px;align-items:center}.img img{width:38px;height:38px;object-fit:cover;border-radius:6px;background:#eee;flex:none}.img select{flex:1}
+pre{background:#111;color:#d1fae5;padding:10px;border-radius:8px;max-height:260px;overflow:auto;font-size:11px;white-space:pre-wrap}
+.right{background:#e5e7eb;overflow:auto;padding:16px;display:flex;flex-direction:column;align-items:center}
+.phone{width:360px;height:740px;border:10px solid #111;border-radius:40px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:Body;position:relative}
+.ptabs{display:flex;gap:6px;margin-bottom:10px}.scr{flex:1;overflow:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+.logo{width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--outline);display:grid;place-items:center;overflow:hidden;font-family:Display;color:var(--primary)}.logo img{width:100%;height:100%;object-fit:contain}
+.chip{border:2px solid var(--text);border-radius:12px;padding:4px 10px;font-weight:700;display:flex;gap:6px;align-items:center}.chip i{width:14px;height:14px;border-radius:50%;background:var(--primary)}
+.hero{position:relative;height:225px;overflow:hidden}.hero img{position:absolute;right:-20px;top:0;height:100%;width:65%;object-fit:cover}.hero .tx{position:relative;padding:12px 14px;width:62%}
+.ey{display:inline-block;background:var(--primary);color:var(--onPrimary);font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 6px;text-transform:uppercase}
+.disp{font-family:Display;line-height:1.02}.btn{display:inline-block;background:var(--primary);color:var(--onPrimary);border-radius:8px;padding:10px 18px;font-weight:700;margin-top:10px}
+.promo{margin:10px 12px;border:1px solid var(--outline);border-left:5px solid var(--primary);border-radius:10px;display:flex;gap:10px;padding:8px;align-items:center;background:var(--surface)}.promo img{width:62px;height:44px;object-fit:cover;border-radius:6px}
+.cps{display:flex;gap:10px;overflow:hidden;padding:0 12px}.cp{flex:none;width:118px}.cp .sq{width:118px;height:118px;border:1px solid var(--outline);border-radius:12px;position:relative;overflow:hidden;background:var(--surface)}.cp .sq img{width:100%;height:100%;object-fit:cover}
+.cp .lb{position:absolute;left:6px;top:4px;color:var(--primary);font-family:Display;font-size:26px}.mut{color:var(--muted);font-size:11px}
+.nav{display:flex;justify-content:space-around;background:var(--surface);border-top:1px solid var(--outline);padding:8px 0 10px;font-size:10px}.nav div{text-align:center;color:var(--muted)}.nav div.on b{background:var(--primary);color:var(--onPrimary)}.nav b{display:block;margin:0 auto 2px;width:44px;border-radius:14px;padding:2px 0}
+.row{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--outline)}.row img{width:54px;height:54px;object-fit:cover;border-radius:8px}
+.cat{display:flex;gap:6px;padding:4px 12px 8px;overflow:hidden}.cat span{border:1px solid var(--outline);border-radius:16px;padding:4px 10px;font-size:12px;white-space:nowrap}.cat span.on{background:var(--primary);color:var(--onPrimary)}
+.rw{margin:8px 12px;border:1px solid var(--outline);border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;background:var(--surface)}.rw .n{font-family:Display;font-size:28px;color:var(--accent)}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.shots img{width:100%;border-radius:6px;border:1px solid #ddd}
+</style></head><body>
+<aside><h1>📱 App Studio</h1><div id="list"></div><hr style="border-color:#374151">
+<label style="color:#9ca3af">Neue App (ID)</label><input id="nid" placeholder="z.B. pizza-roma"><label style="color:#9ca3af">Name</label><input id="nname" placeholder="Pizza Roma"><br><br><button class="p" onclick="createT()">+ Anlegen</button></aside>
+<main><div class="bar"><b id="title">–</b><button class="p" onclick="save()">💾 Speichern</button><button onclick="act('build')">🤖 Android-APK bauen</button><button onclick="act('ios')">🍏 iOS-Projekt (ZIP)</button><button onclick="act('shots')">📸 Screenshots</button><span id="msg"></span></div>
+<div id="form"></div><section id="jobs"><h2>Builds & Downloads</h2><div id="files"></div><pre id="log">–</pre></section></main>
+<div class="right"><div class="ptabs"><button class="s" onclick="pv='home';prev()">Start</button><button class="s" onclick="pv='menu';prev()">Speisekarte</button><button class="s" onclick="pv='rewards';prev()">Prämien</button></div>
+<div class="phone" id="phone"></div><p class="mut" style="max-width:360px">Live-Vorschau (HTML-Nachbau). Pixelgenau: „Screenshots“ rendert die echte Flutter-App.</p></div>
+<script>
+let T=null,ID=null,ASSETS=[],FONTS=[],pv='home',job=null;
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const api=async(u,o={})=>{const r=await fetch(u,o);const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);return j};
+const get=(o,p)=>p.split('.').reduce((a,k)=>a==null?a:a[k],o);
+const set=(o,p,v)=>{const ks=p.split('.');let a=o;ks.slice(0,-1).forEach(k=>{if(a[k]==null)a[k]=/^\d+$/.test(k)?[]:{};a=a[k]});a[ks.at(-1)]=v};
+function msg(t,err){$('#msg').textContent=t;$('#msg').style.color=err?'#b91c1c':'#047857'}
+async function loadList(){const l=await api('/api/tenants');$('#list').innerHTML=l.map(t=>`<div class="t ${t.id==ID?'on':''}" onclick="openT('${t.id}')"><span class="dot" style="background:${t.primary}"></span><div>${esc(t.appName)}<small>${t.id} · v${t.versionName} (${t.versionCode})${t.keystore?' · 🔑':''}</small></div></div>`).join('')}
+async function openT(id){ID=id;T=await api('/api/tenants/'+id);ASSETS=await api(`/api/tenants/${id}/assets`);$('#title').textContent=T.appName;render();loadList();files()}
+async function createT(){try{const t=await api('/api/tenants',{method:'POST',body:JSON.stringify({id:$('#nid').value,name:$('#nname').value})});openT(t.id);msg('Angelegt')}catch(e){msg(e.message,1)}}
+async function save(){try{await api('/api/tenants/'+ID,{method:'PUT',body:JSON.stringify(T)});msg('Gespeichert ✓');loadList();return true}catch(e){msg(e.message,1);return false}}
+async function act(k){if(!await save())return;job=await api(`/api/tenants/${ID}/${k}`,{method:'POST'});msg({build:'APK-Build',ios:'iOS-Export',shots:'Screenshots'}[k]+' gestartet …');poll()}
+async function poll(){if(!job)return;job=await api('/api/jobs/'+job.id);$('#log').textContent=`[${job.state}] ${job.kind} ${job.tenant}\n`+job.log.split('\n').slice(-60).join('\n');$('#log').scrollTop=1e9;
+ if(job.state=='läuft'||job.state=='wartet')setTimeout(poll,1500);else{msg(job.state=='fertig'?'Fertig ✓':'Fehler – siehe Log',job.state!='fertig');files()}}
+async function files(){const f=await api(`/api/tenants/${ID}/files`);$('#files').innerHTML=(f.dist.length?'<b>Downloads:</b> '+f.dist.map(x=>`<a href="/download/${x}">${x}</a>`).join(' · '):'<span class="mut">Noch nichts gebaut.</span>')+(f.screenshots.length?`<div class="shots" style="margin-top:8px">${f.screenshots.map(s=>`<a href="/shot/${ID}/${s}" target=_blank><img src="/shot/${ID}/${s}?${Date.now()}"></a>`).join('')}</div>`:'')}
+async function upload(path,input,cb){const f=input.files[0];if(!f)return;let p=path;if(!p){p='img/'+f.name.toLowerCase().replace(/[^a-z0-9.]+/g,'_');if(!/\.(png|jpe?g|webp)$/.test(p))return msg('Nur PNG/JPG/WEBP',1)}
+ try{await api(`/api/tenants/${ID}/upload?path=${encodeURIComponent(p)}`,{method:'POST',body:f});ASSETS=await api(`/api/tenants/${ID}/assets`);msg('Hochgeladen: '+p);cb&&cb(p);render()}catch(e){msg(e.message,1)}}
+const A=p=>p?`/asset/${ID}/${p}?v=${ASSETS.length}`:'';
+// ---------- field widgets ----------
+function F(path,label,type='text',opt={}){const v=get(T,path);const id='f'+Math.random().toString(36).slice(2);
+ if(type=='color')return `<div><label>${label}</label><input type=color value="${v||'#000000'}" oninput="setv('${path}',this.value)"></div>`;
+ if(type=='bool')return `<div><label><input type=checkbox ${v?'checked':''} onchange="setv('${path}',this.checked)"> ${label}</label></div>`;
+ if(type=='area')return `<div><label>${label}</label><textarea oninput="setv('${path}',this.value)">${esc(v)}</textarea></div>`;
+ if(type=='num')return `<div><label>${label}</label><input type=number step=any value="${v??''}" oninput="setv('${path}',this.value===''?null:+this.value)"></div>`;
+ if(type=='int')return `<div><label>${label}</label><input type=number step=1 value="${v??''}" oninput="setv('${path}',parseInt(this.value)||0)"></div>`;
+ if(type=='font')return `<div><label>${label}</label><select onchange="setv('${path}',this.value)">${FONTS.map(f=>`<option ${f==v?'selected':''}>${f}</option>`).join('')}</select></div>`;
+ if(type=='list')return `<div><label>${label} (kommagetrennt)</label><input value="${esc((v||[]).join(', '))}" oninput="setv('${path}',this.value.split(',').map(s=>s.trim()).filter(Boolean))"></div>`;
+ if(type=='img'){const imgs=ASSETS.filter(a=>/\.(png|jpe?g|webp)$/i.test(a));return `<div><label>${label}</label><div class="img"><img src="${A(v)}" onerror="this.style.visibility='hidden'"><select onchange="setv('${path}',this.value);render()"><option value="">– kein Bild –</option>${imgs.map(a=>`<option ${a==v?'selected':''}>${a}</option>`).join('')}</select><input type=file accept="image/*" style="width:96px" onchange="upload(null,this,p=>setv('${path}',p))"></div></div>`}
+ if(type=='coupon')return `<div><label>${label}</label><select onchange="setv('${path}',this.value)"><option value="">–</option>${(T.coupons||[]).map(c=>`<option value="${c.id}" ${c.id==v?'selected':''}>${esc(c.title)}</option>`).join('')}</select></div>`;
+ return `<div><label>${label}</label><input value="${esc(v)}" oninput="setv('${path}',this.value)"></div>`}
+function setv(p,v){set(T,p,v);if(p=='appName')$('#title').textContent=v;prev()}
+function L(path,title,fields,blank,inner){const arr=get(T,path)||[];return arr.map((it,i)=>`<div class="item"><div class="hd">${esc(it[fields[0][0]]||it.category||'#'+(i+1))}<span><button class="x" onclick="mv('${path}',${i},-1)">↑</button><button class="x" onclick="mv('${path}',${i},1)">↓</button><button class="x" onclick="del('${path}',${i})">✕</button></span></div><div class="g2">${fields.map(([k,l,t])=>F(`${path}.${i}.${k}`,l,t)).join('')}</div>${inner?inner(`${path}.${i}`,it):''}</div>`).join('')+`<button class="s" onclick='add("${path}",${JSON.stringify(blank)})'>+ ${title}</button>`}
+function add(p,b){const a=get(T,p)||[];if(b.id==='')b.id='id'+Date.now().toString(36);a.push(b);set(T,p,a);render()}
+function del(p,i){if(!confirm('Löschen?'))return;get(T,p).splice(i,1);render()}
+function mv(p,i,d){const a=get(T,p),j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];render()}
+const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
+function hours(p,loc){if(!loc.hours||loc.hours.length!=7)loc.hours=DAYS.map((_,i)=>({day:i+1,open:'',close:''}));return `<label>Öffnungszeiten (leer = geschlossen)</label><div class="g5" style="grid-template-columns:40px 1fr 1fr">${loc.hours.map((h,i)=>`<div style="padding-top:8px">${DAYS[i]}</div>${F(p+'.hours.'+i+'.open','auf')}${F(p+'.hours.'+i+'.close','zu')}`).join('')}</div>${F(p+'.facts','Merkmale','list')}`}
+function S(title,html,closed=true){return `<section class="${closed?'closed':''}"><h2 onclick="this.parentNode.classList.toggle('closed')">${title}</h2>${html}</section>`}
+function render(){T.home=T.home||{hero:{},promo:{},news:[]};T.home.hero=T.home.hero||{};T.home.promo=T.home.promo||{};const cl=[...document.querySelectorAll('#form section')].map(s=>s.classList.contains('closed'));
+ $('#form').innerHTML=
+ S('Grunddaten',`<div class="g2">${F('appName','App-Name (unterm Icon)')}${F('brand.name','Markenname')}${F('packageId','Android-Paket (nie mehr ändern!)')}${F('iosBundleId','iOS Bundle-ID (leer = wie Android)')}${F('versionName','Version (z.B. 1.2)')}${F('versionCode','Build-Nr. (bei jedem Update +1)','int')}${F('brand.wordmarkTop','Zeile über Logo')}${F('brand.wordmarkMain','Schriftzug')}${F('brand.tagline','Slogan')}${F('brand.iconText','Icon-Kürzel (wenn kein Icon-Bild)')}</div>`,false)+
+ S('Logo, Icon & Schriften',`<div class="g2"><div><label>Logo (rund oben links)</label><div class="img"><img src="${A(T.brand.logo)}"><input type=file accept="image/*" onchange="upload('logo.png',this,()=>setv('brand.logo','logo.png'))"></div></div>
+  <div><label>App-Icon (quadratisch, 1024px)</label><div class="img"><img src="${ASSETS.includes('icon.png')?A('icon.png'):''}"><input type=file accept="image/png,image/jpeg" onchange="upload('icon.png',this)"></div></div>
+  <div><label>Android adaptiv: Vordergrund (transparent, optional)</label><div class="img"><img src="${ASSETS.includes('icon_foreground.png')?A('icon_foreground.png'):''}"><input type=file accept="image/png" onchange="upload('icon_foreground.png',this)"></div></div>
+  ${F('brand.iconBackground','Icon-Hintergrund','color')}${F('brand.fonts.display','Überschriften-Schrift','font')}${F('brand.fonts.body','Text-Schrift','font')}${F('brand.fonts.bodySemi','Text halbfett','font')}${F('brand.fonts.bodyBold','Text fett','font')}${F('brand.heroImage','Filialbild (Standort-Seite)','img')}${F('brand.secondaryImage','Zweites Filialbild','img')}</div>`)+
+ S('Farben',`<div class="g5">${[['primary','Hauptfarbe'],['onPrimary','Text auf Haupt'],['accent','Akzent'],['onAccent','Text auf Akzent'],['background','Hintergrund'],['surface','Karten'],['surfaceAlt','Karten alt'],['text','Text'],['muted','Text grau'],['outline','Linien']].map(([k,l])=>F('brand.colors.'+k,l,'color')).join('')}</div>${F('brand.dark','Dunkles Design (helle Statusleiste)','bool')}`)+
+ S('Startseite',`<b>Großes Angebot</b><div class="g2">${F('home.hero.image','Bild','img')}${F('home.hero.eyebrow','Kleines Label')}${F('home.hero.title','Titel')}${F('home.hero.subtitle','Untertitel')}${F('home.hero.cta','Button-Text')}${F('home.hero.couponId','Button öffnet Coupon','coupon')}</div><b>Aktions-Streifen</b><div class="g2">${F('home.promo.title','Titel')}${F('home.promo.body','Text')}${F('home.promo.image','Bild','img')}</div><b>Neuigkeiten</b>${L('home.news','Neuigkeit',[['title','Titel'],['body','Text','area'],['image','Bild','img']],{title:'Neu',body:'',image:''})}`)+
+ S('Filialen',L('locations','Filiale',[['name','Name'],['phone','Telefon'],['street','Straße'],['city','PLZ Ort'],['lat','Breitengrad','num'],['lng','Längengrad','num']],{name:'Neue Filiale',street:'',city:'',phone:'',hours:[],facts:[]},hours))+
+ S('Speisekarte',L('menu','Kategorie',[['category','Kategorie']],{category:'Neu',items:[]},(p)=>`<div style="margin-left:10px">${L(p+'.items','Gericht',[['name','Name'],['price','Preis €','num'],['desc','Beschreibung','area'],['image','Bild','img'],['tag','Tag (z.B. vegan)'],['demoPrice','Preis ist Demo (*)','bool']],{name:'Neues Gericht',desc:'',price:0})}</div>`))+
+ S('Coupons',L('coupons','Coupon',[['title','Titel'],['id','ID (technisch)'],['desc','Beschreibung','area'],['image','Bild (quadratisch)','img'],['price','Preis groß (z.B. 8,50)'],['badge','oder Label (z.B. 2× / -1 €)'],['validTo','Gültig bis (JJJJ-MM-TT)']],{id:'',title:'Neuer Coupon',desc:'',badge:'',price:'',image:'',validTo:'2026-12-31'}))+
+ S('Prämien & Treue',`<div class="g3">${F('loyalty.pointsName','Name der Punkte')}${F('loyalty.pointsPerEuro','Punkte pro €','num')}${F('loyalty.signupBonus','Startbonus','int')}${F('loyalty.redeemQrSeconds','QR gültig (Sek.)','int')}${F('staff.pin','Personal-PIN')}</div>${L('rewards','Prämie',[['name','Name'],['points','Punkte','int'],['desc','Beschreibung'],['id','ID (technisch)']],{id:'',name:'Neue Prämie',desc:'',points:50})}`)+
+ S('Push-Kampagnen (Personal-Bereich)',L('campaigns','Kampagne',[['title','Titel'],['body','Text','area']],{title:'',body:''}))+
+ S('Rechtliches & Quellen',`${F('legal.operator','Betreiber / Impressum','area')}${F('legal.privacyNote','Datenschutz-Hinweis','area')}${F('sources','Quellen','list')}`);
+ document.querySelectorAll('#form section').forEach((s,i)=>{if(i<cl.length)s.classList.toggle('closed',cl[i])});prev()}
+// ---------- live preview ----------
+function prev(){if(!T)return;const c=T.brand.colors,f=T.brand.fonts,ph=$('#phone');for(const k in c)ph.style.setProperty('--'+(k=='background'?'bg':k),c[k]);
+ let st=document.getElementById('ff');if(!st){st=document.createElement('style');st.id='ff';document.head.appendChild(st)}
+ st.textContent=`@font-face{font-family:Display;src:url(/fonts/${f.display})}@font-face{font-family:Body;src:url(/fonts/${f.body})}@font-face{font-family:Body;font-weight:700;src:url(/fonts/${f.bodyBold||f.body})}`;
+ const pn=T.loyalty.pointsName||'Punkte',h=T.home.hero||{},pr=T.home.promo||{};let body='';
+ if(pv=='home')body=`${h.title?`<div class="hero">${h.image?`<img src="${A(h.image)}">`:''}<div class="tx">${h.eyebrow?`<span class="ey">${esc(h.eyebrow)}</span>`:''}<div class="disp" style="font-size:34px;margin-top:6px">${esc(h.title)}</div><div style="font-weight:600;font-size:13px;margin-top:6px">${esc(h.subtitle)}</div>${h.cta?`<span class="btn">${esc(h.cta)}</span>`:''}</div></div>`:''}
+  ${pr.title?`<div class="promo">${pr.image?`<img src="${A(pr.image)}">`:''}<div><b>${esc(pr.title)}</b><div style="font-size:12px">${esc(pr.body)}</div></div></div>`:''}
+  <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 12px"><span class="disp" style="font-size:26px">Coupons</span><b style="color:var(--primary);font-size:12px">Alles anzeigen →</b></div>
+  <div class="cps">${(T.coupons||[]).map(cp=>`<div class="cp"><div class="sq">${cp.image?`<img src="${A(cp.image)}">`:''}<span class="lb">${esc(cp.price||cp.badge)}</span></div><div style="font-size:13px;margin-top:4px">${esc(cp.title)}</div><div class="mut">Gültig bis ${esc((cp.validTo||'').split('-').reverse().join('.'))}</div></div>`).join('')}</div>
+  <div class="disp" style="font-size:26px;padding:14px 12px 4px">Was gibt's Neues</div>${(T.home.news||[]).map(n=>`<div class="row"><div><b>${esc(n.title)}</b><div style="font-size:12px">${esc(n.body)}</div></div>${n.image?`<img src="${A(n.image)}">`:''}</div>`).join('')}`;
+ if(pv=='menu'){const m=T.menu||[];body=`<div class="disp" style="font-size:32px;padding:6px 14px">Speisekarte</div><div class="cat">${m.map((x,i)=>`<span class="${i?'':'on'}">${esc(x.category)}</span>`).join('')}</div>`+m.map(x=>`<div style="padding:8px 14px 0;font-weight:700;color:var(--primary)">${esc(x.category)}</div>`+(x.items||[]).map(it=>`<div class="row">${it.image?`<img src="${A(it.image)}">`:''}<div style="flex:1"><b>${esc(it.name)}</b><div class="mut">${esc(it.desc)}</div></div><b>${(+it.price||0).toFixed(2).replace('.',',')} €${it.demoPrice?'*':''}</b></div>`).join('')).join('')}
+ if(pv=='rewards')body=`<div style="padding:6px 14px"><div class="mut" style="letter-spacing:1px;color:var(--accent)">DU HAST 35 ${esc(pn.toUpperCase())}</div><div class="disp" style="font-size:32px">Prämien</div></div>`+(T.rewards||[]).map(r=>`<div class="rw"><div class="n">${r.points}</div><div style="flex:1"><b>${esc(r.name)}</b><div class="mut">${esc(r.desc)}</div></div><span class="btn" style="margin:0;padding:8px 12px;font-size:12px">EINLÖSEN</span></div>`).join('');
+ const logo=T.brand.logo?`<img src="${A(T.brand.logo)}">`:esc(T.brand.iconText||'');
+ ph.innerHTML=`<div class="top"><span style="width:60px"></span><div style="display:flex;gap:4px;align-items:center"><div class="logo">${logo}</div><span style="color:var(--primary)">📍</span></div><div class="chip"><i></i>35 ${esc(pn)}</div></div><div class="scr">${body}</div>
+ <div class="nav">${[['home','⌂','Start'],['menu','☰','Speisekarte'],['code','▦','Mein Code'],['rewards','🎁','Prämien'],['more','≡','Mehr']].map(([k,i,l])=>`<div class="${k==pv?'on':''}"><b>${i}</b>${l}</div>`).join('')}</div>`}
+(async()=>{FONTS=await api('/api/fonts');await loadList();const l=await api('/api/tenants');if(l.length)openT(l.find(t=>t.id=='backstube-demo')?.id||l[0].id)})();
+</script></body></html>
